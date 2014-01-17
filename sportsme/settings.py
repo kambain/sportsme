@@ -13,6 +13,44 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
+
+"""
+    s3
+"""
+DEFAULT_FILE_STORAGE = 's3_folder_storage.s3.DefaultStorage'
+DEFAULT_S3_PATH = "media"
+STATICFILES_STORAGE = 's3_folder_storage.s3.StaticStorage'
+STATIC_S3_PATH = "static"
+AWS_ACCESS_KEY_ID = 'AKIAJQOFUYJWJSHA7HNQ'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'sportsme'
+
+# Absolute filesystem path to the directory that will hold user-uploaded files.
+MEDIA_ROOT = '/%s/' % DEFAULT_S3_PATH
+
+# URL that handles the media served from MEDIA_ROOT. Make sure to use a trailing slash.
+MEDIA_URL = '//s3.amazonaws.com/%s/media/' % AWS_STORAGE_BUCKET_NAME
+
+# Absolute path to the directory static files should be collected to.
+# Don't put anything in this directory yourself; store your static files
+# in apps' "static/" subdirectories and in STATICFILES_DIRS.
+# Example: "/var/www/example.com/static/"
+STATIC_ROOT = '/%s/' % STATIC_S3_PATH
+
+# URL prefix for static files.
+STATIC_URL = '//s3.amazonaws.com/%s/static/' % AWS_STORAGE_BUCKET_NAME
+
+# Additional locations of static files
+STATICFILES_DIRS = (
+    # Put strings here, like "/home/html/static" or "C:/www/django/static".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+    os.path.join(BASE_DIR, "static"),
+)
+
+
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
@@ -37,6 +75,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'south',
+    's3_folder_storage',
     'app',
 )
 
@@ -53,9 +92,6 @@ ROOT_URLCONF = 'sportsme.urls'
 
 WSGI_APPLICATION = 'sportsme.wsgi.application'
 
-
-
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
@@ -70,12 +106,8 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.6/howto/static-files/
 
-STATIC_URL = '/static/'
-
-
+TEMPLATE_DIRS = 'templates'
 
 
 
@@ -94,14 +126,13 @@ DATABASES = {
   }
 }
 
-
-
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Allow all host headers
 ALLOWED_HOSTS = ['*']
 
+'''
 # Static asset configuration
 import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -111,3 +142,4 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+'''
