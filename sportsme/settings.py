@@ -17,7 +17,7 @@ DEFAULT_FILE_STORAGE = 's3_folder_storage.s3.DefaultStorage'
 DEFAULT_S3_PATH = "media"
 STATICFILES_STORAGE = 's3_folder_storage.s3.StaticStorage'
 STATIC_S3_PATH = "static"
-AWS_ACCESS_KEY_ID = 'AKIAJQOFUYJWJSHA7HNQ'
+AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
 AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'sportsme'
 
@@ -50,7 +50,7 @@ TEMPLATE_DIRS = (
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'uz_2h-n0imq-t=ww9w8)*&+g9#*1fae&(g4e7h#r)9%7^zg&f%'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
