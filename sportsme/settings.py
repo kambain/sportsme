@@ -18,7 +18,7 @@ DEFAULT_S3_PATH = "media"
 STATICFILES_STORAGE = 's3_folder_storage.s3.StaticStorage'
 STATIC_S3_PATH = "static"
 AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
-AWS_SECRET_ACCESS_KEY = 'p1JxcqaF4LLbkPWh2eCHkaAfLTLhCQg7deyjDDD7'
+AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
 AWS_STORAGE_BUCKET_NAME = 'sportsme'
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
